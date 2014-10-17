@@ -54,4 +54,9 @@ public class CalculatorTest {
 			assertEquals("Negatives not allowed: -4,-5", e.getMessage());
 		}
 	}
+
+	@Test
+	public void testIgnoreBigNums(){
+		assertEquals(1, Calculator.add("1,1001"));
+	}
 }
