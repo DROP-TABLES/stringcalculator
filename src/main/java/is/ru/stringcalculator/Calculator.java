@@ -31,9 +31,24 @@ public class Calculator {
       
     private static int sum(String[] numbers){
 	int total = 0;
+	int index = 0;
+	boolean haveException = false;
+	// if all numbers are > 0
+	String[] exceptionNums = new String[numbers.length];
         for(String number : numbers){
+		    if(toInt(number) < 0){
+			exceptionNums[index] = number;	
+			index++;
+			haveException = true;
+		    }
 		    total += toInt(number);
+	}
+	if(haveException){
+		String message = "Negatives not allowed: " + exceptionNums[0];
+		for(int i = 1; i < index; i++){
+			message = message + "," + exceptionNums[i];
 		}
-		return total;
+	}
+	return total;
     }
 }
