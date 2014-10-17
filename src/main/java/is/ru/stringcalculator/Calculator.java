@@ -6,7 +6,7 @@ public class Calculator {
 		//are we adding a new delimeter
 		if(text.startsWith("//")){
 			// set delimeter to the third char in string
-			delimeter = String.valueOf(text.charAt(2));
+			delimeter = GetDelimeter(text);
 			text = text.substring(text.indexOf('\n')+1);
 		}
 		
@@ -20,13 +20,21 @@ public class Calculator {
 		else
 			return 1;
 	}
+	
+	private static String GetDelimeter(String text){
+		if(text.charAt(2) == '['){
+			return text.substring(3, text.indexOf(']', 3));
+		}else{
+			return String.valueOf(text.charAt(2));
+		}
+	}
 
 	private static int toInt(String number){
 		return Integer.parseInt(number);
 	}
 
 	private static String[] splitNumbers(String numbers, String delimeter){
-	    return numbers.split(delimeter + "|\\n");
+	    return numbers.split("\\Q" + delimeter + "\\E"  + "|\\n");
 	}
       
     private static int sum(String[] numbers){
