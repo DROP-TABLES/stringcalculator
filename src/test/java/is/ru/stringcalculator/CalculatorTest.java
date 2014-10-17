@@ -59,4 +59,9 @@ public class CalculatorTest {
 	public void testIgnoreBigNums(){
 		assertEquals(1, Calculator.add("1,1001"));
 	}
+
+	@Test
+	public void testLongDelimeter(){
+		assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+	}
 }
