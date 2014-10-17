@@ -38,4 +38,19 @@ public class CalculatorTest {
 	public void testNewDelimeter(){
 		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
+
+	@Test
+	public void testNegativeExceptions(){
+		try{
+			Calculator.add("-1,2");
+		}catch(Exception e){
+			assertEquals("Negatives not allowed: -1", e.getMessage());
+		}
+
+		try{
+			Calculator.add("2,-4,3,-5");
+		}catch(Exception e){
+			assertEquals("Negatives not allowed: -4,-5", e.getMessage());
+		}
+	}
 }

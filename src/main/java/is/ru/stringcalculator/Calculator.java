@@ -1,7 +1,6 @@
 package is.ru.stringcalculator;
 
 public class Calculator {
-
 	public static int add(String text){
 		String delimeter = ",";
 		//are we adding a new delimeter
